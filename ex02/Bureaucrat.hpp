@@ -33,7 +33,8 @@ class Bureaucrat
         void incrGrade(void);
         void decrGrade(void);
 
-        void signAForm(AForm& form);
+        void signForm(AForm& form);
+        void executeForm(const AForm& form) const;
 
     private:
         Bureaucrat& operator=(const Bureaucrat& right); //keep this private pls

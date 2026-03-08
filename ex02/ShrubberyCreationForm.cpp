@@ -25,7 +25,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string target):
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& right): 
-    AForm("Shrubbery Creation Form", false, 145, 137),
+    AForm(right),
     _target(right._target),
     _index(0)
 {
@@ -42,10 +42,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {
-    if (this->getGradeReqExec() < executor.getGrade())
-        throw AForm::GradeToLowException();
-    if (!this->getIsSigned())
-        throw AForm::FormNotSignedException();
+    AForm::execute(executor);
     std::string fileName = this->_target + "_shrubbery";
     std::fstream of(fileName.c_str(), std::ios::app);
     if (!of)

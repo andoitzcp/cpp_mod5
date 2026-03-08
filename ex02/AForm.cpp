@@ -113,5 +113,10 @@ void AForm::beSigned(const Bureaucrat& bureaucrat)
     return ;
 }
 
-
-
+void AForm::execute(const Bureaucrat& executor) const
+{
+    if (this->getGradeReqExec() < executor.getGrade())
+        throw AForm::GradeToLowException();
+    if (!this->getIsSigned())
+        throw AForm::FormNotSignedException();
+}

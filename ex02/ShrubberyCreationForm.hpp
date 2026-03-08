@@ -17,7 +17,7 @@ class ShrubberyCreationForm: public AForm
         const std::string _target;
         int _index;
 
-        ShrubberyCreationForm operator=(const ShrubberyCreationForm& right);
+        ShrubberyCreationForm& operator=(const ShrubberyCreationForm& right);
     
 };
 
